@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.google.code.maven-replacer-plugin</groupId>
+  <artifactId>replacer</artifactId>
+  <versioning>
+    <latest>1.5.4-SNAPSHOT</latest>
+    <versions>
+      <version>1.5.4-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20150831171908</lastUpdated>
+  </versioning>
+</metadata>
