@@ -15,7 +15,9 @@ public class OutputFilenameBuilder {
 	public String buildFrom(String inputFilename, ReplacerMojo mojo) {
 		String based = buildOutputFile(inputFilename, mojo);
 		if (mojo.getInputFilePattern() != null && mojo.getOutputFilePattern() != null) {
-			based = based.replaceAll(mojo.getInputFilePattern(), mojo.getOutputFilePattern());
+			String inputPattern = mojo.getInputFilePattern().replaceAll("\\\\", "/");
+			String outputPattern = mojo.getOutputFilePattern().replaceAll("\\\\", "/");
+			based = based.replaceAll(inputPattern, outputPattern);
 		}
 		
 		return based;

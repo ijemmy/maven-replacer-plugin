@@ -34,7 +34,7 @@ public class OutputFilenameBuilderTest {
 		fileUtils = new FileUtils();
 		builder = new OutputFilenameBuilder();
 	}
-	
+
 	@Test
 	public void shouldReturnFullPathWithAllOutputFileParams() {
 		when(mojo.getOutputDir()).thenReturn(OUTPUT_DIR);
@@ -90,6 +90,16 @@ public class OutputFilenameBuilderTest {
 		
 		output = builder.buildFrom(INPUT_FILE, mojo);
 		assertThat(output, equalTo(fileUtils.createFullPath(BASE_DIR, INPUT_FILE + "-new")));
+	}
+
+	@Test
+	public void shouldNotThrowsExceptionWhenPatternContainBackslash() {
+		when(mojo.getInputFilePattern()).thenReturn("C:\\dev\\git/config.src/(.*)");
+		when(mojo.getOutputFilePattern()).thenReturn("C:\\dev\\git/$1");
+
+		String output = builder.buildFrom(INPUT_FILE, mojo);
+		assertThat(output, equalTo(fileUtils.createFullPath(BASE_DIR, INPUT_FILE)));
+
 	}
 	
 	@Test
